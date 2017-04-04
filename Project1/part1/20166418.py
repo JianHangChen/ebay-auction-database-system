@@ -130,7 +130,9 @@ def parseJson(json_file):
                 table_belong_to_Cat = (table_belong_to_Cat + ItemID + columnSeparator + CategoryName + "\n")
 
 
-            if 'Bids' in item:
+            # if 'Bids' in item:
+            if Number_of_Bids != "0":
+                # if 'bid' in item['Bids']:
                 for bid in item['Bids']['Bid']:    
                     BTime = "\"" + transformDttm(bid['Time']) + "\"" # BTime TEXT,
                     Amount = transformDollar(bid['Amount']) #Amount REAL,
@@ -148,7 +150,7 @@ def parseJson(json_file):
                         Location = transformText(Bidder['Location']) # Location TEXT
                     else:
                         Location = "NULL"
-                    
+                        
 
                     table_User = (table_User + UserID + columnSeparator + Rating + columnSeparator
                         + Country + columnSeparator + Location + "\n")
